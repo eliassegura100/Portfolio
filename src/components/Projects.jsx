@@ -18,11 +18,11 @@ const projects = [
   },
   {
     num: '02',
-    title: 'NeighborNet',
-    badge: 'Hackathon · NSBE',
+    title: 'Pipethon',
+    badge: 'Lead · Completed',
     featured: false,
     description:
-      'Mutual-aid platform built in 8 hours at an NSBE hackathon. Connects volunteers with people needing non-specialized help via three user portals and a live Google Maps request visualization.',
+      'Pipethon is a modern programming language built for the age of intelligent systems. Designed around two powerful primitives, pipeline composition and pattern matching, Pipethon gives developers a clean, expressive way to build AI-powered applications without the boilerplate, fragility, and complexity of traditional code.',
     tags: ['React', 'TypeScript', 'Firebase', 'Google Maps API'],
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/eliassegura100' },

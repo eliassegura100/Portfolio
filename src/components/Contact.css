@@ -7,9 +7,11 @@
 }
 
 .contact-heading {
-  font-family: 'Syne', sans-serif;
-  font-size: 32px;
-  font-weight: 800;
+  font-size: 36px;
+  font-family: "Fugaz One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.05em;
   letter-spacing: -1px;
   color: var(--text);
   margin-top: 12px;

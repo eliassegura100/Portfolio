@@ -6,10 +6,10 @@ export default function Hero() {
       <div className="hero-tag">Available for opportunities · May 2026</div>
       <h1>
         Elias<br />
-        <span>Segura.</span>
+        <span>Segura</span>
       </h1>
       <p className="hero-sub">
-        CS student at LMU building cross-platform apps, robots, and anything
+        CS graduate from LMU that has built cross-platform apps, robots GUI's, and anything
         that solves a real problem. Based in Los Angeles.
       </p>
       <div className="hero-actions">

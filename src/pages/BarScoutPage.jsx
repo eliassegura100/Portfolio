@@ -1,15 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './BarScoutPage.css';
 
 // Convert all screenshots in the barscout folder into an object mapping filenames to URLs
-const screenshots = import.meta.glob('./src/assets/barscout/*.{png,PNG,jpg,JPG,jpeg,JPEG,webp,WEBP}', { eager: true });
+const screenshots = import.meta.glob('/src/assets/*.{png,PNG,jpg,JPG,jpeg,JPEG,webp,WEBP}', { eager: true });
 
 // Convert the imported screenshots into an array of { src, label } objects for easier rendering
 const rawScreenshots = Object.entries(screenshots).map(([path, mod]) => ({
   src: mod.default,
   filename: path.split('/').pop(),
 }))
+
+console.log('Raw screenshots:', rawScreenshots.map(s => s.filename));
 
 const screenGroups = [
   {
@@ -58,31 +60,26 @@ const screens = [
     num: '01',
     title: 'For You',
     desc: "Personalized home screen showing today's specials, upcoming events, your favorite bars, and curated recommendations. Cards are large tap targets layered with name, category, rating, distance, and drink pricing hints.",
-    image: '/assets/barscout/BarScout_For_You_1',
   },
   {
     num: '02',
     title: 'List view',
     desc: 'Scrollable catalog of nearby bars with a bottom-sheet filter panel for sort order, max distance, max price, and minimum rating. Keeps the main list uncluttered while making filters easy to discover.',
-    image: '/assets/barscout/List_View.png',
   },
   {
     num: '03',
     title: 'Map view',
     desc: "Interactive Apple Maps view centered on the user's location. Pink pin markers represent bars — tap any marker to preview basic info and navigate to the full detail screen.",
-    image: '/assets/barscout/Map.png',
   },
   {
     num: '04',
     title: 'Bar details',
     desc: 'Full-width hero image, rating, price level, distance, address, hours, popular drinks list, user reviews, and rideshare cards for UberX / UberXL / Uber Black with deep-link integration.',
-    image: '/assets/barscout/Bar_Detail.png',
   },
   {
     num: '05',
     title: 'Profile',
     desc: 'Avatar, stats (Favorites, Tickets, Reviews), tabbed views for saved bars and event tickets, and a "Switch to Manager Portal" CTA for eligible users with elevated roles.',
-    image: '/assets/barscout/Profile.png',
   },
 ];
 
@@ -113,9 +110,16 @@ const designInsights = [
 
 export default function BarScoutPage() {
   const navigate = useNavigate();
+  const [lightbox, setLightbox] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setLightbox(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   return (
@@ -209,11 +213,6 @@ export default function BarScoutPage() {
             <div key={s.num} className="bs-screen-row" data-num={s.num}>
               <div className="bs-screen-title">{s.title}</div>
               <div className="bs-screen-desc">{s.desc}</div>
-              {s.image ? (
-                <img src={s.image} alt={`${s.title} screen`} className="bs-screen-image" />
-              ) : (
-                <div className="bs-image-placeholder" />
-              )}
             </div>
           ))}
         </div>
@@ -222,14 +221,15 @@ export default function BarScoutPage() {
           <div className="bs-gallery">
             {screenGroups.filter(g => g.images.length > 0).map((group) => (
               <div key={group.label} className="bs-gallery-group">
+                <span className="bs-gallery-label">{group.label}</span>
                 <div className="bs-gallery-frames">
                   {group.images.map((img) => (
-                    <div key={img.src} className="bs-gallery-frame">
+                    <div key={img.src} className="bs-gallery-frame" onClick={() => setLightbox(img.src)}>
                       <img src={img.src} alt={group.label} className="bs-gallery-img" />
                     </div>
                   ))}
                 </div>
-                <span className="bs-gallery-label">{group.label}</span>
+
               </div>
             ))}
           </div>
@@ -341,7 +341,18 @@ export default function BarScoutPage() {
           </div>
         </div>
       </section>
-
+      {/* Lightbox */}
+      {lightbox && (
+        <div className="bs-lightbox" onClick={() => setLightbox(null)}>
+          <button className="bs-lightbox-close" onClick={() => setLightbox(null)}>✕</button>
+          <img
+            src={lightbox}
+            alt="Screenshot"
+            className="bs-lightbox-img"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
   );
 }

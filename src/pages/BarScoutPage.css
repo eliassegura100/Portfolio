@@ -315,17 +315,115 @@
   max-width: 580px;
 }
 
-.bs-gallery-group {
+.bs-gallery {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
+  gap: 36px;
+  overflow-x: auto;
+  padding: 32px 0 0px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
 }
+
+.bs-gallery::-webkit-scrollbar { height: 4px; }
+.bs-gallery::-webkit-scrollbar-track { background: transparent; }
+.bs-gallery::-webkit-scrollbar-thumb { background: var(--border); }
 
 .bs-gallery-frames {
   display: flex;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.bs-gallery-frame {
+  width: 190px;
+  height: 420px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--surface);
+  transition: border-color 0.2s;
+  margin-bottom: 8px;
+}
+
+.bs-gallery-frame:hover { border-color: var(--accent); }
+
+.bs-gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  object-position: center;
+  display: block;
+  
+}
+
+.bs-gallery-label {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  text-transform: uppercase;
+}
+
+/* Lightbox */
+.bs-lightbox {
+  position: fixed;
+  object-fit: contain;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  animation: bs-fade-in 0.15s ease;
+}
+
+@keyframes bs-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.bs-lightbox-img {
+  max-width: 80vw;
+  max-height: 80vh;
+  height: auto;
+  width: auto;
+  border-radius: 12px;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+  cursor: default;
+  animation: bs-scale-in 0.15s ease;
+}
+
+@keyframes bs-scale-in {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.bs-lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text);
+  font-size: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.bs-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.bs-gallery-frame {
+  cursor: pointer;
 }
 
 /* Tech stack */
