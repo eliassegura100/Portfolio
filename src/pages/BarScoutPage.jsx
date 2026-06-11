@@ -55,33 +55,32 @@ const techStack = [
   { label: 'React Query', category: 'Integration' },
 ];
 
-const screens = [
-  {
+const screenDescriptions = {
+  'For You': {
     num: '01',
-    title: 'For You',
     desc: "Personalized home screen showing today's specials, upcoming events, your favorite bars, and curated recommendations. Cards are large tap targets layered with name, category, rating, distance, and drink pricing hints.",
   },
-  {
+  'Bars near you': {
     num: '02',
-    title: 'List view',
     desc: 'Scrollable catalog of nearby bars with a bottom-sheet filter panel for sort order, max distance, max price, and minimum rating. Keeps the main list uncluttered while making filters easy to discover.',
   },
-  {
+  'Filter': {
     num: '03',
-    title: 'Map view',
+    desc: 'A bottom sheet slides up from the list view with sort controls (distance, rating, price), a max distance slider, a max price slider, and a minimum rating slider. Reset and Apply buttons keep actions clear and reversible.',
+  },
+  'Map': {
+    num: '04',
     desc: "Interactive Apple Maps view centered on the user's location. Pink pin markers represent bars — tap any marker to preview basic info and navigate to the full detail screen.",
   },
-  {
-    num: '04',
-    title: 'Bar details',
+  'Bar detail': {
+    num: '05',
     desc: 'Full-width hero image, rating, price level, distance, address, hours, popular drinks list, user reviews, and rideshare cards for UberX / UberXL / Uber Black with deep-link integration.',
   },
-  {
-    num: '05',
-    title: 'Profile',
+  'Profile': {
+    num: '06',
     desc: 'Avatar, stats (Favorites, Tickets, Reviews), tabbed views for saved bars and event tickets, and a "Switch to Manager Portal" CTA for eligible users with elevated roles.',
   },
-];
+};
 
 const features = [
   { icon: '◈', label: 'Drink price transparency', desc: 'Beer, shot, and mixed drink prices surfaced before you arrive — no surprises at the bar.' },
@@ -110,17 +109,23 @@ const designInsights = [
 
 export default function BarScoutPage() {
   const navigate = useNavigate();
-  const [lightbox, setLightbox] = useState(null);
+  const [activeGroup, setActiveGroup] = useState(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') setLightbox(null);
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    const first = screenGroups.find(g => g.images.length > 0);
+    if (first) setActiveGroup(first);
   }, []);
+  // const [lightbox, setLightbox] = useState(null);
+
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+
+  //   const handleKeyDown = (e) => {
+  //     if (e.key === 'Escape') setLightbox(null);
+  //   };
+  //   window.addEventListener('keydown', handleKeyDown);
+  //   return () => window.removeEventListener('keydown', handleKeyDown);
+  // }, []);
 
   return (
     <div className="bs-root">
@@ -205,35 +210,69 @@ export default function BarScoutPage() {
         </div>
       </section>
 
-      {/* Screens */}
+      {/* Screens + Gallery — unified */}
       <section className="bs-section">
         <div className="bs-section-label">App screens</div>
-        <div className="bs-screens-list">
-          {screens.map((s) => (
-            <div key={s.num} className="bs-screen-row" data-num={s.num}>
-              <div className="bs-screen-title">{s.title}</div>
-              <div className="bs-screen-desc">{s.desc}</div>
-            </div>
-          ))}
-        </div>
-        {/* Screenshot gallery */}
-        {screenGroups.some(g => g.images.length > 0) && (
-          <div className="bs-gallery">
+
+        <div className="bs-unified-layout">
+
+          {/* Thumbnails */}
+          <div className="bs-ft-thumbs">
             {screenGroups.filter(g => g.images.length > 0).map((group) => (
-              <div key={group.label} className="bs-gallery-group">
-                <span className="bs-gallery-label">{group.label}</span>
-                <div className="bs-gallery-frames">
+              <div
+                key={group.label}
+                className={`bs-ft-thumb ${activeGroup?.label === group.label ? 'active' : ''}`}
+                onClick={() => setActiveGroup(group)}
+              >
+                <div className="bs-ft-thumb-frames">
                   {group.images.map((img) => (
-                    <div key={img.src} className="bs-gallery-frame" onClick={() => setLightbox(img.src)}>
-                      <img src={img.src} alt={group.label} className="bs-gallery-img" />
-                    </div>
+                    <img key={img.src} src={img.src} alt={group.label} className="bs-ft-thumb-img" />
                   ))}
                 </div>
-
+                <span className="bs-ft-thumb-label">{group.label}</span>
               </div>
             ))}
           </div>
-        )}
+
+          {/* Featured image */}
+          {activeGroup && (
+            <div
+              className="bs-ft-featured"
+              onClick={() => setLightbox(activeGroup.images[0].src)}
+              key={activeGroup.label}
+            >
+              {activeGroup.images.length === 2 ? (
+                <div className="bs-ft-double">
+                  <img src={activeGroup.images[0].src} alt={activeGroup.label} className="bs-ft-featured-img" />
+                  <img src={activeGroup.images[1].src} alt={activeGroup.label} className="bs-ft-featured-img" />
+                </div>
+              ) : (
+                <img src={activeGroup.images[0].src} alt={activeGroup.label} className="bs-ft-featured-img" />
+              )}
+              <div className="bs-ft-featured-label">
+                {activeGroup.label}
+                <span className="bs-ft-zoom-hint">click to expand</span>
+              </div>
+            </div>
+          )}
+
+          {/* Description panel */}
+          {activeGroup && screenDescriptions[activeGroup.label] && (
+            <div className="bs-screen-info" key={activeGroup.label + '-desc'}>
+              <div className="bs-screen-info-num">
+                {screenDescriptions[activeGroup.label].num}
+              </div>
+              <h3 className="bs-screen-info-title">{activeGroup.label}</h3>
+              <p className="bs-screen-info-desc">
+                {screenDescriptions[activeGroup.label].desc}
+              </p>
+              <div className="bs-screen-info-hint">
+                ↑ click image to expand
+              </div>
+            </div>
+          )}
+
+        </div>
       </section>
 
       {/* Tech stack */}
@@ -341,7 +380,7 @@ export default function BarScoutPage() {
           </div>
         </div>
       </section>
-      {/* Lightbox */}
+      {/* Lightbox
       {lightbox && (
         <div className="bs-lightbox" onClick={() => setLightbox(null)}>
           <button className="bs-lightbox-close" onClick={() => setLightbox(null)}>✕</button>
@@ -352,7 +391,7 @@ export default function BarScoutPage() {
             onClick={(e) => e.stopPropagation()}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 }
