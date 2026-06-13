@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FunnelPlus, CarTaxiFrontIcon, UsersRound, Speech, MapPinned } from 'lucide-react'; 
 import './BarScoutPage.css';
 
 // Convert all screenshots in the barscout folder into an object mapping filenames to URLs
@@ -57,38 +58,38 @@ const techStack = [
 
 const screenDescriptions = {
   'For You': {
-    num: '01',
+    num: '1',
     desc: "Personalized home screen showing today's specials, upcoming events, your favorite bars, and curated recommendations. Cards are large tap targets layered with name, category, rating, distance, and drink pricing hints.",
   },
   'Bars near you': {
-    num: '02',
+    num: '2',
     desc: 'Scrollable catalog of nearby bars with a bottom-sheet filter panel for sort order, max distance, max price, and minimum rating. Keeps the main list uncluttered while making filters easy to discover.',
   },
   'Filter': {
-    num: '03',
+    num: '3',
     desc: 'A bottom sheet slides up from the list view with sort controls (distance, rating, price), a max distance slider, a max price slider, and a minimum rating slider. Reset and Apply buttons keep actions clear and reversible.',
   },
   'Map': {
-    num: '04',
+    num: '4',
     desc: "Interactive Apple Maps view centered on the user's location. Pink pin markers represent bars — tap any marker to preview basic info and navigate to the full detail screen.",
   },
   'Bar detail': {
-    num: '05',
+    num: '5',
     desc: 'Full-width hero image, rating, price level, distance, address, hours, popular drinks list, user reviews, and rideshare cards for UberX / UberXL / Uber Black with deep-link integration.',
   },
   'Profile': {
-    num: '06',
+    num: '6',
     desc: 'Avatar, stats (Favorites, Tickets, Reviews), tabbed views for saved bars and event tickets, and a "Switch to Manager Portal" CTA for eligible users with elevated roles.',
   },
 };
 
 const features = [
-  { icon: '◈', label: 'Drink price transparency', desc: 'Beer, shot, and mixed drink prices surfaced before you arrive — no surprises at the bar.' },
-  { icon: '◉', label: 'Smart filtering', desc: 'Filter by distance, price range, rating, and deal type from a clean bottom-sheet panel.' },
-  { icon: '◍', label: 'Rideshare integration', desc: 'One-tap Uber and Lyft deep links from the bar detail screen to get you there safely.' },
-  { icon: '◎', label: 'Dual user system', desc: 'Separate customer and manager portals — patrons discover, managers update pricing and promote events.' },
-  { icon: '◐', label: 'Crowdsourced updates', desc: 'Users submit price updates which enter a moderation queue; admins approve before they go live.' },
-  { icon: '◑', label: 'Geo-radius queries', desc: 'Geohash-based Firestore queries efficiently surface only the bars within your chosen radius.' },
+  { icon: '$', label: 'Drink price transparency', desc: 'Beer, shot, and mixed drink prices surfaced before you arrive — no surprises at the bar.' },
+  { icon: <FunnelPlus />, label: 'Smart filtering', desc: 'Filter by distance, price range, rating, and deal type from a clean bottom-sheet panel.' },
+  { icon: <CarTaxiFrontIcon />, label: 'Rideshare integration', desc: 'One-tap Uber and Lyft deep links from the bar detail screen to get you there safely.' },
+  { icon: <UsersRound />, label: 'Dual user system', desc: 'Separate customer and manager portals — patrons discover, managers update pricing and promote events.' },
+  { icon: <Speech />, label: 'Crowdsourced updates', desc: 'Users submit price updates which enter a moderation queue; admins approve before they go live.' },
+  { icon: <MapPinned />, label: 'Geo-radius queries', desc: 'Geohash-based Firestore queries efficiently surface only the bars within your chosen radius.' },
 ];
 
 const milestones = [
@@ -110,22 +111,20 @@ const designInsights = [
 export default function BarScoutPage() {
   const navigate = useNavigate();
   const [activeGroup, setActiveGroup] = useState(null);
+  const [lightbox, setLightbox] = useState(null);
 
   useEffect(() => {
     const first = screenGroups.find(g => g.images.length > 0);
     if (first) setActiveGroup(first);
+
+    window.scrollTo(0, 0);
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setLightbox(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
-  // const [lightbox, setLightbox] = useState(null);
-
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-
-  //   const handleKeyDown = (e) => {
-  //     if (e.key === 'Escape') setLightbox(null);
-  //   };
-  //   window.addEventListener('keydown', handleKeyDown);
-  //   return () => window.removeEventListener('keydown', handleKeyDown);
-  // }, []);
 
   return (
     <div className="bs-root">
@@ -182,13 +181,13 @@ export default function BarScoutPage() {
         <div className="bs-section-label">The problem</div>
         <div className="bs-two-col">
           <div className="bs-problem-card">
-            <div className="bs-problem-num">01</div>
+            <div className="bs-problem-num">1</div>
             <p className="bs-problem-text">
               Students planning a night out have no easy way to answer: <em>"Which bar nearby actually has good happy-hour deals tonight?"</em> Drink prices aren't listed online — you find out when the bill arrives.
             </p>
           </div>
           <div className="bs-problem-card">
-            <div className="bs-problem-num">02</div>
+            <div className="bs-problem-num">2</div>
             <p className="bs-problem-text">
               Bar front-of-house staff manage guests with ad-hoc tools — shared spreadsheets, handwritten notes, group chats. There's a gap between full POS systems and lightweight, visually clear operational tools.
             </p>
@@ -238,20 +237,33 @@ export default function BarScoutPage() {
           {activeGroup && (
             <div
               className="bs-ft-featured"
-              onClick={() => setLightbox(activeGroup.images[0].src)}
               key={activeGroup.label}
             >
               {activeGroup.images.length === 2 ? (
                 <div className="bs-ft-double">
-                  <img src={activeGroup.images[0].src} alt={activeGroup.label} className="bs-ft-featured-img" />
-                  <img src={activeGroup.images[1].src} alt={activeGroup.label} className="bs-ft-featured-img" />
+                  <img
+                    src={activeGroup.images[0].src}
+                    alt={activeGroup.label}
+                    className="bs-ft-featured-img bs-ft-clickable"
+                    onClick={() => setLightbox(activeGroup.images[0].src)}
+                  />
+                  <img
+                    src={activeGroup.images[1].src}
+                    alt={activeGroup.label}
+                    className="bs-ft-featured-img bs-ft-clickable"
+                    onClick={() => setLightbox(activeGroup.images[1].src)}
+                  />
                 </div>
               ) : (
-                <img src={activeGroup.images[0].src} alt={activeGroup.label} className="bs-ft-featured-img" />
+                <img
+                  src={activeGroup.images[0].src}
+                  alt={activeGroup.label}
+                  className="bs-ft-featured-img bs-ft-clickable"
+                  onClick={() => setLightbox(activeGroup.images[0].src)}
+                />
               )}
               <div className="bs-ft-featured-label">
                 {activeGroup.label}
-                <span className="bs-ft-zoom-hint">click to expand</span>
               </div>
             </div>
           )}
@@ -267,7 +279,7 @@ export default function BarScoutPage() {
                 {screenDescriptions[activeGroup.label].desc}
               </p>
               <div className="bs-screen-info-hint">
-                ↑ click image to expand
+                ← click image to expand
               </div>
             </div>
           )}
@@ -380,7 +392,7 @@ export default function BarScoutPage() {
           </div>
         </div>
       </section>
-      {/* Lightbox
+      {/* Lightbox */}
       {lightbox && (
         <div className="bs-lightbox" onClick={() => setLightbox(null)}>
           <button className="bs-lightbox-close" onClick={() => setLightbox(null)}>✕</button>
@@ -391,7 +403,7 @@ export default function BarScoutPage() {
             onClick={(e) => e.stopPropagation()}
           />
         </div>
-      )} */}
+      )}
     </div>
   );
 }

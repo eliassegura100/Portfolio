@@ -7,6 +7,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ParticleBackground from './components/ParticleBackground';
+import PageTransition from './components/PageTransition';
 import BarScoutPage from './pages/BarScoutPage';
 import './styles/globals.css';
 
@@ -24,16 +25,24 @@ function Home() {
   );
 }
 
+function AnimatedRoutes() {
+  return (
+    <PageTransition>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects/barscout" element={<BarScoutPage />} />
+      </Routes>
+    </PageTransition>
+  );
+}
+
 export default function App() {
   return (
     <BrowserRouter>
-      <div className ="root">
+      <div className="root">
         <ParticleBackground />
-        <div style={{ position: 'relative', zIndex: 1}}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/projects/barscout" element={<BarScoutPage />} />
-          </Routes>
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <AnimatedRoutes />
         </div>
       </div>
     </BrowserRouter>
