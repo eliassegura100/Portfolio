@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Nav from './components/Nav';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
@@ -16,9 +16,9 @@ function Home() {
     <>
       <Nav />
       <Hero />
+      <About />
       <Projects />
       <Skills />
-      <About />
       <Contact />
       <Footer />
     </>
@@ -26,13 +26,34 @@ function Home() {
 }
 
 function AnimatedRoutes() {
+  const location = useLocation();
+  const isBarScout = location.pathname === '/projects/barscout';
+  const accent = getComputedStyle(document.documentElement)
+    .getPropertyValue('--accent')
+    .trim(); 
+
+  const accent3 = getComputedStyle(document.documentElement)
+    .getPropertyValue('--accent3-2')
+    .trim(); 
+
+  // Then convert hex to RGB for the canvas
+  function hexToRgb(hex) {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return `${r}, ${g}, ${b}`;
+  }
+
   return (
-    <PageTransition>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects/barscout" element={<BarScoutPage />} />
-      </Routes>
-    </PageTransition>
+    <>
+      <ParticleBackground color={isBarScout ? hexToRgb(accent3) : hexToRgb(accent)} />
+      <PageTransition>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects/barscout" element={<BarScoutPage />} />
+        </Routes>
+      </PageTransition>
+    </>
   );
 }
 
@@ -40,7 +61,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <div className="root">
-        <ParticleBackground />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <AnimatedRoutes />
         </div>

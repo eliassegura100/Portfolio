@@ -1,6 +1,6 @@
 .bs-root {
   min-height: 100vh;
-  background: var(--bg);
+  /* background: var(--bg); */
   color: var(--text);
   font-family: 'DM Mono', monospace;
 }
@@ -42,20 +42,6 @@
   overflow: hidden;
 }
 
-/* Glowing Orb */
-.bs-hero::before { 
-  content: '';
-  background: radial-gradient(circle, #9c59ef57, transparent 75%);
-  position: fixed;
-  top: -60px;
-  right: -60px;
-  width: clamp(200px, 40vw, 600px);
-  height: clamp(200px, 40vw, 600px);
-  pointer-events: none;
-  z-index: 0;
-  animation: pulse 6s ease-in-out infinite;
-}
-
 .bs-hero-eyebrow {
   display: flex;
   gap: 8px;
@@ -80,6 +66,10 @@
   letter-spacing: -3px;
   color: var(--text);
   margin-bottom: 20px;
+  background: linear-gradient(180deg, #ffffff 0%, var(--accent3) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .bs-subtitle {
@@ -416,7 +406,8 @@
 .bs-ft-double {
   display: flex;
   gap: 12px;
-  width: 70%;
+  width: auto;
+  min-width: 50%;
   padding: 8px;
   align-items: flex-start;
   justify-content: center;
@@ -427,8 +418,8 @@
 .bs-ft-double .bs-ft-featured-img {
   flex: 1;
   width: 0;
-  height: 662px;
-  /* max-height: 676px; */
+  height: auto;
+  max-height: 670px;
   object-fit: contain;
   object-position: top center;
   border-radius: 25px;
@@ -888,12 +879,13 @@
 }
 
 .bs-cta-heading {
-  font-family: 'Syne', sans-serif;
+  font-family: "Fugaz One", sans-serif;
   font-size: 32px;
-  font-weight: 800;
-  letter-spacing: -1px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
   color: var(--text);
   margin-top: 12px;
+  
 }
 
 .bs-cta-links {

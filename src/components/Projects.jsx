@@ -3,7 +3,6 @@ import './Projects.css';
 
 const projects = [
   {
-    num: '01',
     title: 'BarScout',
     badge: 'Lead · Active',
     featured: true,
@@ -17,7 +16,6 @@ const projects = [
     ],
   },
   {
-    num: '02',
     title: 'Pipethon',
     badge: 'Lead · Completed',
     featured: false,
@@ -29,7 +27,6 @@ const projects = [
     ],
   },
   {
-    num: '03',
     title: 'LMU ROBO Arm GUI',
     badge: 'Team Lead · Active',
     featured: false,
@@ -51,7 +48,6 @@ export default function Projects() {
           <div
             key={project.num}
             className={`project-card${project.featured ? ' featured' : ''}`}
-            data-num={project.num}
           >
             <div className="project-meta">
               <div className="project-title">{project.title}</div>

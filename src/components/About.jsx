@@ -1,7 +1,7 @@
 import './About.css';
 
 const stats = [
-  { num: '3.41', label: 'GPA' },
+  { num: '3.49', label: 'GPA' },
   { num: '3+', label: 'Projects' },
   { num: '4', label: 'Clubs' },
 ];
@@ -13,8 +13,8 @@ export default function About() {
       <div className="about-grid">
         <div>
           <p className="about-text">
-            I'm a CS senior at Loyola Marymount University (GPA 3.41) graduating
-            May 2026. I build things that matter — from nightlife apps with real
+            I'm a CS graduate at Loyola Marymount University (GPA 3.49) graduating
+            May 2026. I build things that matter, from nightlife apps with real
             industry partnerships to hackathon tools that help communities.
           </p>
           <p className="about-text" style={{ marginTop: '16px' }}>
@@ -42,7 +42,7 @@ export default function About() {
             Awards: Xavier Award · LMU Grant · Federal SEOG Grant
           </p>
           <p className="about-text" style={{ marginTop: '12px' }}>
-            Work: Senior Recreation Leader at El Segundo Recreation Park —
+            Work: Senior Recreation Leader at El Segundo Recreation Park
             managing staff, maintaining databases, and improving UX for
             public-facing systems.
           </p>
