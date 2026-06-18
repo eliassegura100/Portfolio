@@ -10,6 +10,7 @@ import ParticleBackground from './components/ParticleBackground';
 import PageTransition from './components/PageTransition';
 import BarScoutPage from './pages/BarScoutPage';
 import './styles/globals.css';
+import PipethonPage from './pages/PipethonPage';
 
 function Home() {
   return (
@@ -28,13 +29,14 @@ function Home() {
 function AnimatedRoutes() {
   const location = useLocation();
   const isBarScout = location.pathname === '/projects/barscout';
+  const isPipethon = location.pathname === '/projects/pipethon';
   const accent = getComputedStyle(document.documentElement)
     .getPropertyValue('--accent')
-    .trim(); 
+    .trim();
 
   const accent3 = getComputedStyle(document.documentElement)
     .getPropertyValue('--accent3-2')
-    .trim(); 
+    .trim();
 
   // Then convert hex to RGB for the canvas
   function hexToRgb(hex) {
@@ -44,13 +46,22 @@ function AnimatedRoutes() {
     return `${r}, ${g}, ${b}`;
   }
 
+
+  const particleColor = isBarScout
+    ? '157, 89, 239'
+    : isPipethon
+      ? '0, 229, 160'
+      : '0, 134, 229';
+
+
   return (
     <>
-      <ParticleBackground color={isBarScout ? hexToRgb(accent3) : hexToRgb(accent)} />
+      <ParticleBackground color={particleColor} />
       <PageTransition>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects/barscout" element={<BarScoutPage />} />
+          <Route path="/projects/pipethon" element={<PipethonPage />} />
         </Routes>
       </PageTransition>
     </>

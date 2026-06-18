@@ -24,6 +24,7 @@ const projects = [
     tags: ['React', 'TypeScript', 'Firebase', 'Google Maps API'],
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/eliassegura100' },
+      { label: 'Case study →', href: '/projects/pipethon', external: false },
     ],
   },
   {
