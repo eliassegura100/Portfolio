@@ -9,8 +9,8 @@ import Footer from './components/Footer';
 import ParticleBackground from './components/ParticleBackground';
 import PageTransition from './components/PageTransition';
 import BarScoutPage from './pages/BarScoutPage';
-import './styles/globals.css';
 import PipethonPage from './pages/PipethonPage';
+import './styles/globals.css';
 
 function Home() {
   return (

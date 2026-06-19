@@ -148,7 +148,7 @@ export default function BarScoutPage() {
         <div className="bs-hero-links">
           <a
             className="bs-btn-primary"
-            href="https://github.com/eliassegura100"
+            href="https://github.com/eliassegura100/BarScout"
             target="_blank"
             rel="noreferrer"
           >

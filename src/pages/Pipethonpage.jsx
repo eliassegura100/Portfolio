@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Network, BotMessageSquare, ScrollText,PackageCheck } from 'lucide-react'
 import './PipethonPage.css';
 
 const techStack = [
@@ -17,32 +18,32 @@ const techStack = [
 
 const features = [
   {
-    icon: '▷',
+    icon: '|>',
     label: 'Pipeline composition',
-    desc: 'The |> operator is the primary composition primitive. Every program is a series of clean data transformations — no tangled callbacks, no deeply nested conditionals.',
+    desc: 'The |> operator is the primary composition primitive. Every program is a series of clean data transformations. No tangled callbacks and deeply nested conditionals.',
   },
   {
-    icon: '◈',
+    icon: <Network />,
     label: 'Exhaustive pattern matching',
-    desc: 'Match by type, shape, value, or structure. Pattern blocks must cover all cases at compile time — the analyzer rejects non-exhaustive matches before they run.',
+    desc: 'Match by type, shape, value, or structure. Pattern blocks must cover all cases at compile time, the analyzer rejects non-exhaustive matches before they run.',
   },
   {
-    icon: '◎',
+    icon: <BotMessageSquare />,
     label: 'AI-native primitives',
     desc: 'llm() is syntax, not a library call. Call any AI model directly in a pipeline stage. Outputs are typed as String? and must be handled exhaustively.',
   },
   {
-    icon: '◐',
+    icon: '??',
     label: 'First-class optionals',
     desc: 'String?, Int?, etc. Null is only legal when declared. Assigning none to a non-optional is a compile error. Unwrap safely with the ?? coalesce operator.',
   },
   {
-    icon: '◉',
+    icon: <ScrollText />,
     label: '13 static rules',
-    desc: 'Pipethon enforces 13 static constraints at analysis time — from null safety to exhaustive matching. Violations are reported with precise source locations.',
+    desc: 'Pipethon enforces 13 static constraints at analysis time, from null safety to exhaustive matching. Violations are reported with precise source locations.',
   },
   {
-    icon: '◍',
+    icon: <PackageCheck />,
     label: 'Compiles to JavaScript',
     desc: 'The full compiler pipeline: parse → analyze → optimize → generate. Outputs clean, runnable JS from .pipe source files via the CLI.',
   },
@@ -50,17 +51,15 @@ const features = [
 
 const codeExamples = [
   {
-    num: '01',
     title: 'Hello, pipeline',
     file: 'hello_world.pipe',
-    desc: 'The simplest Pipethon program — a string piped to print using the |> operator.',
+    desc: 'The simplest Pipethon program, a string piped to print using the |> operator.',
     code: `"hello, world" |> print;`,
   },
   {
-    num: '02',
     title: 'Pattern matching with guards',
     file: 'grade_checker.pipe',
-    desc: 'Pattern match on an integer with if-guard conditions. The block must be exhaustive — the wildcard _ arm covers any unmatched case.',
+    desc: 'Pattern match on an integer with if-guard conditions. The block must be exhaustive, the wildcard \'_\' arm covers any unmatched case.',
     code: `let score: Int = 87n;
 
 score |> {
@@ -73,7 +72,6 @@ score |> {
 // => "B"`,
   },
   {
-    num: '03',
     title: 'Optional / null safety',
     file: 'null_coalesce.pipe',
     desc: 'Optional types, some/none pattern matching, and the ?? coalesce operator.',
@@ -89,7 +87,6 @@ username |> {
 // => "Guest"`,
   },
   {
-    num: '04',
     title: 'LLM as a pipe stage',
     file: 'ai_query_handler.pipe',
     desc: 'Call an AI model directly in the pipeline. The output is typed String? — pattern matching handles the some/none branches exhaustively.',
@@ -118,7 +115,7 @@ const staticRules = [
   'The left operand of ?? must be an optional type.',
   'llm() calls must include a model argument.',
   'llm() calls must include a prompt argument.',
-  'Pattern blocks must be exhaustive — must include a wildcard _ or cover all cases.',
+  'Pattern blocks must be exhaustive, must include a wildcard _ or cover all cases.',
   'The wildcard _ arm must be the last arm in a pattern block.',
   'Guard conditions must be boolean expressions.',
   'Type annotations in let and pipeline declarations must name known types.',
@@ -160,12 +157,12 @@ export default function PipethonPage() {
         <p className="pt-tagline">Flow · Match · Think</p>
         <p className="pt-subtitle">
           A modern programming language built for the age of intelligent systems.
-          Designed around pipeline composition and pattern matching — Pipethon gives
+          Designed around pipeline composition and pattern matching. Pipethon gives
           developers a clean, expressive way to build AI-powered applications without
           the boilerplate, fragility, and complexity of traditional code.
         </p>
         <div className="pt-hero-links">
-          <a className="pt-btn-primary" href="https://github.com/eliassegura100/Pipethon" target="_blank" rel="noreferrer">
+          <a className="pt-btn-primary" href="https://github.com/eliassegura100/Pipethon/tree/main" target="_blank" rel="noreferrer">
             GitHub ↗
           </a>
           <a className="pt-btn-ghost" href="https://eliassegura100.github.io/Pipethon/" target="_blank" rel="noreferrer">
@@ -197,16 +194,16 @@ export default function PipethonPage() {
         <div className="pt-section-label">Why we built it</div>
         <div className="pt-two-col">
           <div className="pt-problem-card">
-            <div className="pt-problem-num">01</div>
+            <div className="pt-problem-title">Problem</div>
             <p className="pt-problem-text">
               Building AI-powered applications in traditional languages means deeply nested callbacks,
               brittle string parsing, and unpredictable model output with no type safety.
             </p>
           </div>
           <div className="pt-problem-card">
-            <div className="pt-problem-num">02</div>
+            <div className="pt-problem-title">Solution</div>
             <p className="pt-problem-text">
-              Pipethon was designed to solve all three at once — centering the language around
+              Pipethon was designed to solve all three at once. Centering the language around
               <em> pipeline composition</em> and <em>pattern matching</em> to turn messy AI code
               into clear, readable programs that tell a story from input to output.
             </p>

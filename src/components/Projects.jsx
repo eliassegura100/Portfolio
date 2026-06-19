@@ -10,7 +10,7 @@ const projects = [
       'A cross-platform nightlife planning app for discovering bars, clubs, and drink deals. Features dual portals for customers and venue managers, Uber/Lyft API integration for safe nights out, and international partnerships in Sweden.',
     tags: ['React', 'JavaScript', 'TypeScript', 'Swift', 'Uber API', 'Lyft API', 'Expo Go'],
     links: [
-      { label: 'GitHub ↗', href: 'https://github.com/eliassegura100' },
+      { label: 'GitHub ↗', href: 'https://github.com/eliassegura100/BarScout' },
       { label: 'Demo via Expo Go ↗', href: '#' },
       { label: 'Case study →', href: '/projects/barscout', external: false },
     ],
@@ -23,17 +23,17 @@ const projects = [
       'Pipethon is a modern programming language built for the age of intelligent systems. Designed around two powerful primitives, pipeline composition and pattern matching, Pipethon gives developers a clean, expressive way to build AI-powered applications without the boilerplate, fragility, and complexity of traditional code.',
     tags: ['React', 'TypeScript', 'Firebase', 'Google Maps API'],
     links: [
-      { label: 'GitHub ↗', href: 'https://github.com/eliassegura100' },
+      { label: 'GitHub ↗', href: 'https://github.com/eliassegura100/Pipethon/tree/main' },
       { label: 'Case study →', href: '/projects/pipethon', external: false },
     ],
   },
   {
-    title: 'LMU ROBO Arm GUI',
-    badge: 'Team Lead · Active',
+    title: '(Project will be posted soon)',
+    badge: '',
     featured: false,
     description:
-      'Leading a team of college developers to build a Python GUI for controlling a robotic arm. Manages weekly standups, onboards team members to Python, and drives the full software lifecycle.',
-    tags: ['Python', 'PyQt6', 'Robotics'],
+      '',// 'Leading a team of college developers to build a Python GUI for controlling a robotic arm. Manages weekly standups, onboards team members to Python, and drives the full software lifecycle.',
+    tags: [''],//['Python', 'PyQt6', 'Robotics'],
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/eliassegura100' },
     ],

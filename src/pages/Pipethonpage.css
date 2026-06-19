@@ -2,11 +2,11 @@
 
 .pt-root {
   min-height: 100vh;
-  background: var(--bg);
+  /* background: var(--bg); */
   color: var(--text);
   font-family: 'DM Mono', monospace;
   --pt: #00e5a0;
-  --pt-dim: rgba(0, 229, 160, 0.1);
+  --pt-dim: rgba(0, 229, 160, 0.459);
   --pt-border: rgba(0, 229, 160, 0.2);
 }
 
@@ -45,7 +45,7 @@
   overflow: hidden;
 }
 
-.pt-hero::before {
+/* .pt-hero::before {
   content: '';
   position: absolute;
   bottom: -80px;
@@ -54,7 +54,7 @@
   height: 500px;
   background: radial-gradient(circle, rgba(0, 229, 160, 0.07) 0%, transparent 70%);
   pointer-events: none;
-}
+} */
 
 .pt-hero-eyebrow {
   display: flex;
@@ -73,13 +73,13 @@
 }
 
 .pt-title {
-  font-family: 'Syne', sans-serif;
+  font-family: "Fugaz One", sans-serif;
   font-size: clamp(52px, 10vw, 96px);
-  font-weight: 800;
+  font-weight: 500;
   line-height: 0.95;
   letter-spacing: -3px;
-  margin-bottom: 12px;
-  background: linear-gradient(135deg, #ffffff 0%, var(--pt) 100%);
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #ffffff 0%, var(--pt) 40%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -211,10 +211,19 @@
 }
 
 .pt-problem-num {
-  font-family: 'Syne', sans-serif;
+  font-family: "Fugaz One", sans-serif;
   font-size: 48px;
-  font-weight: 800;
+  font-weight: 500;
   color: var(--pt-dim);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.pt-problem-title {
+  font-family: "Fugaz One", sans-serif;
+  font-size: 48px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
   line-height: 1;
   margin-bottom: 16px;
 }
@@ -573,10 +582,10 @@
 }
 
 .pt-cta-heading {
-  font-family: 'Syne', sans-serif;
+  font-family: "Fugaz One", sans-serif;
   font-size: 32px;
-  font-weight: 800;
-  letter-spacing: -1px;
+  font-weight: 500;
+  letter-spacing: 0px;
   color: var(--text);
   margin-top: 12px;
 }

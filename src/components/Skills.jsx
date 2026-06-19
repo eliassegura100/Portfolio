@@ -1,9 +1,9 @@
 import './Skills.css';
 
 const skills = [
-  'C++', 'JavaScript', 'Python', 'Swift', 'SwiftUI',
-  'React', 'TypeScript', 'Java', 'PostgreSQL', 'Firebase',
-  'NASM', 'Unity', 'PyQt6', 'Git',
+  'Python', 'JavaScript', 'C++', 'Swift', 'SwiftUI',
+  'React', 'TypeScript', 'Java', 'PostgreSQL', 'Firebase', 'Supabase',
+  'Rust', 'NASM', 'Unity', 'PyQt6', 'Git',
 ];
 
 export default function Skills() {
