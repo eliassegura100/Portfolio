@@ -11,7 +11,7 @@ const projects = [
     tags: ['React', 'JavaScript', 'TypeScript', 'Swift', 'Uber API', 'Lyft API', 'Expo Go'],
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/eliassegura100/BarScout' },
-      { label: 'Demo via Expo Go ↗', href: '#' },
+      // { label: 'Demo via Expo Go ↗', href: '#' }, (For now until the demo is ready)
       { label: 'Case study →', href: '/projects/barscout', external: false },
     ],
   },
