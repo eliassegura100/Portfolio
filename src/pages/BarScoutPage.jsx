@@ -183,13 +183,13 @@ export default function BarScoutPage() {
           <div className="bs-problem-card">
             <div className="bs-problem-num">1</div>
             <p className="bs-problem-text">
-              Students planning a night out have no easy way to answer: <em>"Which bar nearby actually has good happy-hour deals tonight?"</em> Drink prices aren't listed online — you find out when the bill arrives.
+              Students planning a night out have no easy way to answer: <em>"Which bar nearby actually has good happy-hour deals tonight?"</em> Drink prices aren't listed online, you find out when the bill arrives.
             </p>
           </div>
           <div className="bs-problem-card">
             <div className="bs-problem-num">2</div>
             <p className="bs-problem-text">
-              Bar front-of-house staff manage guests with ad-hoc tools — shared spreadsheets, handwritten notes, group chats. There's a gap between full POS systems and lightweight, visually clear operational tools.
+              Bar front-of-house staff manage guests with ad-hoc tools, shared spreadsheets, handwritten notes, group chats. There's a gap between full POS systems and lightweight, visually clear operational tools.
             </p>
           </div>
         </div>
