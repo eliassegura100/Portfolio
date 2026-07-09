@@ -3,9 +3,21 @@ import './Projects.css';
 
 const projects = [
   {
-    title: 'BarScout',
+    title: 'EV Charging Network Analytics',
     badge: 'Lead · Active',
     featured: true,
+    description:
+      'A full-stack analytics dashboard for EV charger network health, built on 3,395 real charging sessions from a Georgia Tech field study. Uses SQL window functions to flag underperforming chargers and rank stations for field inspection, every chart exposes its live, editable SQL. Built to mirror the monitoring workflow of a charging network data science team.',
+    tags: ['Python', 'FastAPI', 'DuckDB', 'SQL', 'React', 'TypeScript', 'Recharts', 'pandas'],
+    links: [
+      { label: 'GitHub ↗', href: 'https://github.com/eliassegura100/EV-Charging-Stations' },
+      { label: 'Website →', external: false, href: 'https://ev-charging-network-analytics.netlify.app/' },
+    ],
+  },
+  {
+    title: 'BarScout',
+    badge: 'Lead · Active',
+    featured: false,
     description:
       'A cross-platform nightlife planning app for discovering bars, clubs, and drink deals. Features dual portals for customers and venue managers, Uber/Lyft API integration for safe nights out, and international partnerships in Sweden.',
     tags: ['React', 'JavaScript', 'TypeScript', 'Swift', 'Uber API', 'Lyft API', 'Expo Go'],
@@ -25,17 +37,6 @@ const projects = [
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/eliassegura100/Pipethon/tree/main' },
       { label: 'Case study →', href: '/projects/pipethon', external: false },
-    ],
-  },
-  {
-    title: '(Project will be posted soon)',
-    badge: '',
-    featured: false,
-    description:
-      '',// 'Leading a team of college developers to build a Python GUI for controlling a robotic arm. Manages weekly standups, onboards team members to Python, and drives the full software lifecycle.',
-    tags: [''],//['Python', 'PyQt6', 'Robotics'],
-    links: [
-      { label: 'GitHub ↗', href: 'https://github.com/eliassegura100' },
     ],
   },
 ];
