@@ -3,7 +3,8 @@ import './Skills.css';
 const skills = [
   'Python', 'JavaScript', 'C++', 'Swift', 'SwiftUI',
   'React', 'TypeScript', 'Java', 'PostgreSQL', 'Firebase', 'Supabase',
-  'Rust', 'NASM', 'Unity', 'PyQt6', 'Git',
+  'Rust', 'NASM', 'Unity', 'PyQt6', 'Git', 'pandas', 'NumPy', 'Matplotlib',
+  'FastAPI', 'Ohm.js', 'DuckDB'
 ];
 
 export default function Skills() {

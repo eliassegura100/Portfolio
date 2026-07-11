@@ -4,7 +4,7 @@ import './Projects.css';
 const projects = [
   {
     title: 'EV Charging Network Analytics',
-    badge: 'Lead · Active',
+    badge: 'Solo · Active',
     featured: true,
     description:
       'A full-stack analytics dashboard for EV charger network health, built on 3,395 real charging sessions from a Georgia Tech field study. Uses SQL window functions to flag underperforming chargers and rank stations for field inspection, every chart exposes its live, editable SQL. Built to mirror the monitoring workflow of a charging network data science team.',
@@ -33,7 +33,7 @@ const projects = [
     featured: false,
     description:
       'Pipethon is a modern programming language built for the age of intelligent systems. Designed around two powerful primitives, pipeline composition and pattern matching, Pipethon gives developers a clean, expressive way to build AI-powered applications without the boilerplate, fragility, and complexity of traditional code.',
-    tags: ['React', 'TypeScript', 'Firebase', 'Google Maps API'],
+    tags: ['JavaScript', 'Ohm.js', 'Compilers', 'Static Analysis', 'Language Design'],
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/eliassegura100/Pipethon/tree/main' },
       { label: 'Case study →', href: '/projects/pipethon', external: false },
