@@ -375,20 +375,17 @@ export default function BarScoutPage() {
         <div className="bs-cta-inner">
           <div>
             <div className="bs-section-label">Try it</div>
-            <div className="bs-cta-heading">See BarScout<br />in action.</div>
+            <div className="bs-cta-heading">See BarScout<br />in development.</div>
           </div>
           <div className="bs-cta-links">
             <a
               className="bs-btn-primary"
-              href="https://github.com/eliassegura100"
+              href="https://github.com/eliassegura100/BarScout"
               target="_blank"
               rel="noreferrer"
             >
               View on GitHub ↗
             </a>
-            <p className="bs-cta-note">
-              Demo available via Expo Go — scan the QR in the repo README.
-            </p>
           </div>
         </div>
       </section>
