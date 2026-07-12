@@ -45,17 +45,6 @@
   overflow: hidden;
 }
 
-/* .pt-hero::before {
-  content: '';
-  position: absolute;
-  bottom: -80px;
-  right: -80px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(0, 229, 160, 0.07) 0%, transparent 70%);
-  pointer-events: none;
-} */
-
 .pt-hero-eyebrow {
   display: flex;
   gap: 8px;

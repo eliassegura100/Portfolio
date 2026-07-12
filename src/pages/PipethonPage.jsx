@@ -149,7 +149,7 @@ export default function PipethonPage() {
       {/* Hero */}
       <header className="pt-hero">
         <div className="pt-hero-eyebrow">
-          <span className="pt-tag">Completed · 2025</span>
+          <span className="pt-tag">Completed · 2026</span>
           <span className="pt-tag">Programming Language</span>
           <span className="pt-tag">Co-creator</span>
         </div>
