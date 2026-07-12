@@ -6,8 +6,16 @@ const projects = [
     title: 'EV Charging Network Analytics',
     badge: 'Solo · Active',
     featured: true,
-    description:
-      'A full-stack analytics dashboard for EV charger network health, built on 3,395 real charging sessions from a Georgia Tech field study. Uses SQL window functions to flag underperforming chargers and rank stations for field inspection, every chart exposes its live, editable SQL. Built to mirror the monitoring workflow of a charging network data science team.',
+    description: (
+      <>
+        A full-stack analytics dashboard for EV charger network health, built on 3,395 real
+        charging sessions from a Georgia Tech field study. Uses SQL window functions to flag
+        underperforming chargers and rank stations for field inspection, every chart exposes its
+        live, editable SQL. Built to mirror the monitoring workflow of a charging network data
+        science team. <strong style={{ color: '#00aeff' }}>Side-note</strong>: Website might take 30 seconds to load fully due
+        to Render&apos;s backend deployment.
+      </>
+    ),
     tags: ['Python', 'FastAPI', 'DuckDB', 'SQL', 'React', 'TypeScript', 'Recharts', 'pandas'],
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/eliassegura100/EV-Charging-Stations' },
