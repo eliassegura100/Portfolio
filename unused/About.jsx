@@ -1,4 +1,3 @@
-import { useReveal } from '../hooks/useReveal';
 import './About.css';
 
 const stats = [
@@ -8,18 +7,14 @@ const stats = [
 ];
 
 export default function About() {
-  const sectionRef = useReveal(0.1);
-  const leftRef = useReveal(0.1, '0.1s');
-  const rightRef = useReveal(0.1, '0.2s');
-
   return (
-    <section className="section reveal-section" id="about" ref={sectionRef}>
+    <section className="section" id="about">
       <div className="section-label">About</div>
       <div className="about-grid">
-        <div className="reveal-item" ref={leftRef}>
+        <div>
           <p className="about-text">
             I'm a CS graduate at Loyola Marymount University (GPA 3.49) graduating
-            May 2026. I build things that matter — from nightlife apps with real
+            May 2026. I build things that matter, from nightlife apps with real
             industry partnerships to hackathon tools that help communities.
           </p>
           <p className="about-text" style={{ marginTop: '16px' }}>
@@ -35,17 +30,21 @@ export default function About() {
             ))}
           </div>
         </div>
-        <div className="reveal-item" ref={rightRef}>
-          <p className="about-text">Education: B.S. Computer Science, LMU · May 2026</p>
+        <div>
+          <p className="about-text">
+            Education: B.S. Computer Science, LMU · May 2026
+          </p>
           <p className="about-text" style={{ marginTop: '12px' }}>
-            Coursework includes AI, OS, Algorithms, Databases, Mobile Apps, and Interaction Design.
+            Coursework includes AI, OS, Algorithms, Databases, Mobile Apps, and
+            Interaction Design.
           </p>
           <p className="about-text" style={{ marginTop: '12px' }}>
             Awards: Xavier Award · LMU Grant · Federal SEOG Grant
           </p>
           <p className="about-text" style={{ marginTop: '12px' }}>
-            Work: Senior Recreation Leader at El Segundo Recreation Park —
-            managing staff, maintaining databases, and improving UX for public-facing systems.
+            Work: Senior Recreation Leader at El Segundo Recreation Park
+            managing staff, maintaining databases, and improving UX for
+            public-facing systems.
           </p>
         </div>
       </div>

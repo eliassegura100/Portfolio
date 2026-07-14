@@ -1,3 +1,4 @@
+/* ── Shared section styles ── */
 .section {
   padding: 60px 40px;
   border-bottom: 1px solid var(--border);
@@ -22,17 +23,57 @@
   background: var(--accent);
 }
 
-.projects-grid {
+/* ── Scroll reveal ── */
+.reveal-header {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal-header.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-card {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease, background 0.2s;
+}
+
+.reveal-card.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children via nth-child */
+.bento-grid .reveal-card:nth-child(1) { transition-delay: 0.05s; }
+.bento-grid .reveal-card:nth-child(2) { transition-delay: 0.15s; }
+.bento-grid .reveal-card:nth-child(3) { transition-delay: 0.25s; }
+
+/* ── Bento grid ── */
+.bento-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
   gap: 1px;
   background: var(--border);
 }
 
+/* Large card spans full width on top */
+.project-card--large {
+  grid-column: 1 / -1;
+}
+
+/* Small cards sit side by side below */
+.project-card--small {
+  grid-column: span 1;
+}
+
+/* ── Card styles ── */
 .project-card {
   background: var(--surface);
-  padding: 32px;
-  transition: background 0.2s;
+  padding: 36px;
   position: relative;
   overflow: hidden;
 }
@@ -42,20 +83,20 @@
 }
 
 .project-card.featured {
-  border-left: 2px solid var(--accent);
+  border-top: 2px solid var(--accent);
 }
 
-.project-card::after {
-  content: attr(data-num);
-  position: absolute;
-  bottom: 16px;
-  right: 24px;
-  font-family: 'Syne', sans-serif;
-  font-size: 72px;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.03);
-  line-height: 1;
-  pointer-events: none;
+
+.project-featured-label {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 3px 10px;
+  margin-bottom: 16px;
+  opacity: 0.7;
 }
 
 .project-meta {
@@ -63,14 +104,20 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 12px;
+  gap: 16px;
 }
 
 .project-title {
   font-family: "Fugaz One", sans-serif;
-  font-size: 25px;
+  font-size: 30px;
   font-weight: 500;
   color: var(--text);
   letter-spacing: -0.1px;
+  line-height: 1.2;
+}
+
+.project-card--large .project-title {
+  font-size: 28px;
 }
 
 .project-badge {
@@ -81,14 +128,18 @@
   border: 1px solid var(--accent);
   color: var(--accent);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .project-desc {
   font-size: 14px;
   color: var(--muted);
-  line-height: 1.7;
-  margin: 10px 0 20px;
-  max-width: 600px;
+  line-height: 1.75;
+  margin: 12px 0 20px;
+}
+
+.project-card--large .project-desc {
+  max-width: 680px;
 }
 
 .project-tags {
@@ -99,7 +150,7 @@
 }
 
 .tag {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--muted);
   padding: 3px 10px;
   border: 1px solid var(--border);
@@ -108,7 +159,8 @@
 
 .project-links {
   display: flex;
-  gap: 12px;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .project-link {
@@ -121,14 +173,21 @@
   align-items: center;
   gap: 4px;
   transition: opacity 0.2s;
+  text-decoration: none;
 }
 
-.project-link:hover {
-  opacity: 0.7;
-}
+.project-link:hover { opacity: 0.7; }
 
-@media (max-width: 600px) {
-  .section {
-    padding: 48px 20px;
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .section { padding: 48px 20px; }
+
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card--large,
+  .project-card--small {
+    grid-column: 1 / -1;
   }
 }
