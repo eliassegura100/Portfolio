@@ -2,7 +2,7 @@ import './About.css';
 
 const stats = [
   { num: '3.49', label: 'GPA' },
-  { num: '3+', label: 'Projects' },
+  { num: '20+', label: 'Projects' },
   { num: '4', label: 'Clubs' },
 ];
 
