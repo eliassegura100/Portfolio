@@ -44,7 +44,7 @@ export default function About() {
             Awards: Xavier Award · LMU Grant · Federal SEOG Grant
           </p>
           <p className="about-text" style={{ marginTop: '12px' }}>
-            Work: Senior Recreation Leader at El Segundo Recreation Park —
+            Work: Senior Recreation Leader at El Segundo Recreation Park
             managing staff, maintaining databases, and improving UX for public-facing systems.
           </p>
         </div>
