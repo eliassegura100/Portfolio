@@ -47,6 +47,19 @@ const projects = [
       { label: 'Case study →', href: '/projects/pipethon', external: false },
     ],
   },
+  {
+    title: 'NeighborNet',
+    badge: 'Team · Active',
+    featured: false,
+    size: 'large',
+    description:
+      'A community mutual-aid platform born out of an 8-hour NSBE hackathon focused on social good, connecting neighbors who need a hand with neighbors ready to give one. Rebuilt post-hackathon onto a Postgres/PostGIS backend for real geospatial "nearby" search, with every database write gated behind Row Level Security and validated RPC functions instead of open table access.',
+    tags: ['React', 'Supabase', 'PostgreSQL', 'PostGIS', 'Google Maps API', 'Twilio'],
+    links: [
+      { label: 'GitHub ↗', href: 'https://github.com/eliassegura100/NeighborNet', external: true },
+      { label: 'Website ↗', href: 'https://neighbor-net-service.netlify.app', external: true },
+    ],
+  },
 ];
 
 export default function Projects() {
@@ -72,7 +85,7 @@ export default function Projects() {
               ))}
             </div>
             <div className="project-links">
-              {project.links.map((link) => 
+              {project.links.map((link) =>
                 link.external ? (
                   <a
                     key={link.label}
