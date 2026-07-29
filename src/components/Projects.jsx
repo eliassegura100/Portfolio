@@ -27,7 +27,9 @@ const projects = [
     badge: 'Lead · Active',
     featured: false,
     description:
-      'A cross-platform nightlife planning app for discovering bars, clubs, and drink deals. Features dual portals for customers and venue managers, Uber/Lyft API integration for safe nights out, and international partnerships in Sweden.',
+      `A cross-platform nightlife planning app for discovering bars, clubs, and drink deals. 
+      Features dual portals for customers and venue managers, Uber/Lyft API integration for 
+      safe nights out, and international partnerships in Sweden.`,
     tags: ['React', 'JavaScript', 'TypeScript', 'Swift', 'Uber API', 'Lyft API', 'Expo Go'],
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/eliassegura100/BarScout' },
@@ -40,7 +42,10 @@ const projects = [
     badge: 'Lead · Completed',
     featured: false,
     description:
-      'Pipethon is a modern programming language built for the age of intelligent systems. Designed around two powerful primitives, pipeline composition and pattern matching, Pipethon gives developers a clean, expressive way to build AI-powered applications without the boilerplate, fragility, and complexity of traditional code.',
+      `Pipethon is a modern programming language built for the age of intelligent systems. 
+      Designed around two powerful primitives, pipeline composition and pattern matching, 
+      Pipethon gives developers a clean, expressive way to build AI-powered applications 
+      without the boilerplate, fragility, and complexity of traditional code.`,
     tags: ['JavaScript', 'Ohm.js', 'Compilers', 'Static Analysis', 'Language Design'],
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/eliassegura100/Pipethon/tree/main' },
