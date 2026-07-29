@@ -53,7 +53,11 @@ const projects = [
     featured: false,
     size: 'large',
     description:
-      'A community mutual-aid platform born out of an 8-hour NSBE hackathon focused on social good, connecting neighbors who need a hand with neighbors ready to give one. Rebuilt post-hackathon onto a Postgres/PostGIS backend for real geospatial "nearby" search, with every database write gated behind Row Level Security and validated RPC functions instead of open table access.',
+      `A community mutual-aid platform born out of an 8-hour NSBE hackathon focused on social good, 
+      connecting neighbors who need a hand with neighbors ready to give one. Rebuilt post-hackathon 
+      onto a Postgres/PostGIS backend for real geospatial "nearby" search, with every database write 
+      gated behind Row Level Security and validated RPC functions instead of open table access. Demo
+      is live, not a full production app.`,
     tags: ['React', 'Supabase', 'PostgreSQL', 'PostGIS', 'Google Maps API', 'Twilio'],
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/eliassegura100/NeighborNet', external: true },
