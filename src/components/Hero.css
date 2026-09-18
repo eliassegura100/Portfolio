@@ -1,8 +1,29 @@
 .hero {
-  padding: 80px 40px 60px;
+  padding: 80px 40px 0;
   border-bottom: 1px solid var(--border);
   position: relative;
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.hero.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Two-column layout */
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 60px;
+  align-items: center;
+  padding-bottom: 60px;
+}
+
+.hero-text {
+  max-width: 600px;
 }
 
 .hero-tag {
@@ -26,9 +47,9 @@
 
 .hero h1 {
   font-family: "Fugaz One", sans-serif;
-  font-size: clamp(42px, 8vw, 72px);
-  font-weight:500;
-  line-height: 1.0;
+  font-size: clamp(52px, 9vw, 88px);
+  font-weight: 500;
+  line-height: 0.95;
   letter-spacing: -1px;
   color: var(--text);
   margin-bottom: 8px;
@@ -41,9 +62,9 @@
 .hero-sub {
   font-size: 14px;
   color: var(--muted);
-  margin-top: 16px;
-  max-width: 480px;
-  line-height: 1.7;
+  margin-top: 20px;
+  max-width: 460px;
+  line-height: 1.8;
 }
 
 .hero-actions {
@@ -66,11 +87,10 @@
   cursor: pointer;
   transition: opacity 0.2s;
   display: inline-block;
+  text-decoration: none;
 }
 
-.btn-primary:hover {
-  opacity: 0.85;
-}
+.btn-primary:hover { opacity: 0.85; }
 
 .btn-ghost {
   background: transparent;
@@ -84,15 +104,129 @@
   cursor: pointer;
   transition: border-color 0.2s, color 0.2s;
   display: inline-block;
+  text-decoration: none;
 }
 
-.btn-ghost:hover {
-  border-color: var(--accent);
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Photo */
+.hero-photo-wrap {
+  position: relative;
+  flex-shrink: 0;
+  transform: translateY(-40px);
+  margin-right: 70px;
+  margin-bottom: 20px; 
+}
+
+.hero-photo-frame {
+  width: 300px;
+  height: 370px;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  position: relative;
+  z-index: 1;
+}
+
+.hero-photo {
+  width: 150%;
+  height: 140%;
+  margin-left: -24%;
+  margin-top: -49%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* Placeholder shown when image fails or isn't set */
+.hero-photo-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface2);
+}
+
+.hero-photo-placeholder span {
+  font-family: "Fugaz One", sans-serif;
+  font-size: 64px;
   color: var(--accent);
+  opacity: 0.3;
+}
+
+/* Decorative offset accent border */
+.hero-photo-accent {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  transform: translate(10px, 10px);
+  opacity: 0.25;
+  z-index: 0;
+}
+
+/* Stats strip */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+
+.hero-stat {
+  flex: 1;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-stat-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .hero-photo-wrap {
+    display: none;
+  }
+  .hero-stats {
+    flex-wrap: wrap;
+  }
+  .hero-stat {
+    min-width: 50%;
+  }
+  .hero-stat-divider {
+    display: none;
+  }
 }
 
 @media (max-width: 600px) {
   .hero {
-    padding: 48px 20px;
+    padding: 48px 20px 0;
   }
 }
