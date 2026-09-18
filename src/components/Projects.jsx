@@ -25,7 +25,7 @@ const projects = [
   },
   {
     title: 'BarScout',
-    badge: 'Lead · Active',
+    badge: 'Lead · Completed',
     featured: false,
     size: 'small',
     description:
@@ -47,6 +47,36 @@ const projects = [
     links: [
       { label: 'GitHub ↗', href: 'https://github.com/eliassegura100/Pipethon/tree/main', external: true },
       { label: 'Case study →', href: '/projects/pipethon', external: false },
+    ],
+  },
+  {
+    title: 'NeighborNet',
+    badge: 'Team · Completed',
+    featured: false,
+    size: 'small',
+    description:
+      `A community mutual-aid platform born out of an 8-hour NSBE hackathon focused on social good, 
+      connecting neighbors who need a hand with neighbors ready to give one. Rebuilt post-hackathon 
+      onto a Postgres/PostGIS backend for real geospatial "nearby" search, with every database write 
+      gated behind Row Level Security and validated RPC functions instead of open table access. Demo
+      is live, not a full production app.`,
+    tags: ['React', 'Supabase', 'PostgreSQL', 'PostGIS', 'Google Maps API', 'Twilio'],
+    links: [
+      { label: 'GitHub ↗', href: 'https://github.com/eliassegura100/NeighborNet', external: true },
+      { label: 'Website ↗', href: 'https://neighbor-net-service.netlify.app', external: true },
+    ],
+  },
+  {
+    title: 'Walls of Resistance',
+    badge: 'Solo · Completed',
+    featured: false,
+    size: 'small',
+    description:
+      'An interactive web essay on Palestinian graffiti, visual art, and cultural identity — produced as the creative component of a research paper for AAAS 3998 at LMU. Traces the history of Palestinian visual resistance from the First Intifada to Banksy, with profiles of Naji al-Ali and Kamal Boullata. Designed so the form reflects the argument.',
+    tags: ['HTML', 'CSS', 'JavaScript', 'GitHub Pages', 'Research', 'Web Design'],
+    links: [
+      { label: 'GitHub ↗', href: 'https://github.com/eliassegura100/Walls-Of-Resistance', external: true },
+      { label: 'Website ↗', href: 'https://eliassegura100.github.io/Walls-Of-Resistance/', external: true },
     ],
   },
 ];
