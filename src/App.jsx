@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import Nav from './components/Nav';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
@@ -38,13 +39,13 @@ function AnimatedRoutes() {
     .getPropertyValue('--accent3-2')
     .trim();
 
-  // Then convert hex to RGB for the canvas
-  function hexToRgb(hex) {
-    const r = parseInt(hex.slice(1, 3), 16);
-    const g = parseInt(hex.slice(3, 5), 16);
-    const b = parseInt(hex.slice(5, 7), 16);
-    return `${r}, ${g}, ${b}`;
-  }
+  // Then convert hex to RGB for the canvas (What was this created for? Probably for the particle background)
+  // function hexToRgb(hex) {
+  //   const r = parseInt(hex.slice(1, 3), 16);
+  //   const g = parseInt(hex.slice(3, 5), 16);
+  //   const b = parseInt(hex.slice(5, 7), 16);
+  //   return `${r}, ${g}, ${b}`;
+  // }
 
 
   const particleColor = isBarScout
@@ -69,6 +70,10 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
+  useEffect(() => {
+    fetch('https://ev-charging-stations-7ly3.onrender.com/api/health').catch(() => {});
+  }, []);
+
   return (
     <BrowserRouter>
       <div className="root">
